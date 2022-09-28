@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useEmForms, required, email, EmFormErrorMessage } from "@enfometa/em-forms";
-import Test from "./Test";
 
 const Login = (props) => {
-  const [data, setData] = useState(567);
   const forms = useEmForms({
     forms: [
       {
@@ -50,10 +48,6 @@ const Login = (props) => {
 
             <div className="row g-3">
               <div className="col-12">
-                <Test>
-                  <h3>This is h3</h3>
-                  <h3>This is h3</h3>
-                </Test>
                 <input
                   type="email"
                   className="form-control"
