@@ -1,24 +1,27 @@
 import React from "react";
-// import { useEmForms } from "@enfometa/emforms";
+import { useEmForms, required } from "@enfometa/emforms/dist/index";
 import Test from "./Test";
 
 const Login = (props) => {
+  const forms = useEmForms({
+    forms: [
+      {
+        name: "username",
+        value: "hali",
+        validators: [{ name: "required", func: required, message: "Username is required" }],
+      },
+      {
+        name: "password",
+        value: "a1!",
+        validators: [{ name: "required", func: required, message: "Password is required" }],
+      },
+    ],
+  });
+
+  console.log("forms", forms);
   const var1 = true;
   const var2 = true;
-  // const forms = useEmForms({
-  //   forms: [
-  //     {
-  //       name: "username",
-  //       value: "hali",
-  //       validators: [{ name: "required", func: required, message: "Username is required" }],
-  //     },
-  //     {
-  //       name: "password",
-  //       value: "a1!",
-  //       validators: [{ name: "required", func: required, message: "Password is required" }],
-  //     },
-  //   ],
-  // });
+
   return (
     <div className="container">
       <main>
