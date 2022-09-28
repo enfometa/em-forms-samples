@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEmForms, required, EmFormErrorMessage } from "@enfometa/em-forms";
+import { useEmForms, required, email, EmFormErrorMessage } from "@enfometa/em-forms";
 import Test from "./Test";
 
 const Login = (props) => {
@@ -9,7 +9,10 @@ const Login = (props) => {
       {
         name: "username",
         value: "",
-        validators: [{ name: "required", func: required, message: "Username is required" }],
+        validators: [
+          { name: "required", func: required, message: "Username is required" },
+          { name: "email", func: email, message: "Invalid email address" },
+        ],
       },
       {
         name: "password",
@@ -34,6 +37,10 @@ const Login = (props) => {
     forms.setFormValue(formName, value);
   };
 
+  const setFormTouch = (formName) => {
+    forms.setFormTouch(formName, true);
+  };
+
   return (
     <div className="container">
       <main>
@@ -51,27 +58,25 @@ const Login = (props) => {
                   type="email"
                   className="form-control"
                   id="email"
-                  placeholder="username"
+                  placeholder="Email"
                   onChange={(e) => updateFormValue("username", e.target.value)}
                   value={forms.getFormValue("username")}
+                  onBlur={(e) => setFormTouch("username")}
                 />
                 <div className="error-message">
-                  <EmFormErrorMessage
-                    emForms={forms}
-                    formName="username"
-                    validatorName="required"
-                    onChange={(e) => updateFormValue("username", e.target.value)}
-                  />
+                  <EmFormErrorMessage emForms={forms} formName="username" validatorName="required" />
+                  <EmFormErrorMessage emForms={forms} formName="username" validatorName="email" />
                 </div>
               </div>
               <div className="col-12">
                 <input
                   type="password"
                   className="form-control"
-                  id="email"
+                  id="password"
                   placeholder="password"
                   onChange={(e) => updateFormValue("password", e.target.value)}
                   value={forms.getFormValue("password")}
+                  onBlur={(e) => setFormTouch("password")}
                 />
                 <div className="error-message">
                   <EmFormErrorMessage emForms={forms} formName="password" validatorName="required" />
