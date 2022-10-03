@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmForm, emFormsGlobalConfig } from "@enfometa/em-forms";
 
-const Login = (props) => {
+const LoginWithoutFormsGroup = (props) => {
   const forms = useEmForms({
     forms: [
       {
@@ -44,7 +44,7 @@ const Login = (props) => {
       <main>
         <div className="row g-5">
           <div className="col-md-6 col-lg-4">
-            <h4 className="mb-3">Login without FormGroup</h4>
+            <h4 className="mb-3">Functional component Login without FormGroup</h4>
             <div className="row g-3">
               <div className="col-12">
                 <input
@@ -88,4 +88,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default LoginWithoutFormsGroup;

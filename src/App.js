@@ -1,15 +1,16 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Header from "./components/layout/Header";
-import Login from "./components/Login";
-import Login2 from "./components/Login2";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import BaseLayout from "./components/layout/BaseLayout";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <br />
-      <Login2 />
+      <Router>
+        <Routes>
+          <Route exact path="*" element={<BaseLayout />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
