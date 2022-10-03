@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmForm, emFormsGlobalConfig } from "@enfometa/em-forms";
-
-emFormsGlobalConfig.emFormValueFunc = (e) => e.target.value;
+import { useEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmForm } from "@enfometa/em-forms";
 
 const Login2 = (props) => {
   const forms = useEmForms({
