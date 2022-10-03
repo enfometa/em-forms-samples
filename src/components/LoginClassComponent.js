@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { required, email, EmFormErrorMessage, EmFormGroup, EmForm, initEmForms, EmFormsCore } from "@enfometa/em-forms";
+import { required, email, EmFormErrorMessage, EmFormGroup, EmForm, initEmForms, EmFormsCore, minLength } from "@enfometa/em-forms";
 
 class LoginClassComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      emForms: {
+    //this.state = {};
+
+    this.formsCore = initEmForms(
+      {
         forms: [
           {
             name: "username",
@@ -21,25 +23,18 @@ class LoginClassComponent extends React.Component {
             validators: [{ name: "required", func: required, message: "Password is required" }],
           },
         ],
-        handleStateUpdate: this.handleStateUpdate,
       },
-    };
-
-    this.formsCore = new EmFormsCore(this.state.emForms);
-    console.log("from ctor", this.formsCore);
+      this,
+      "forms"
+    );
   }
 
-  handleStateUpdate = () => {
-    this.setState({ emForms: { ...this.state.emForms } });
-    this.formsCore.setFormsObj(this.state.emForms);
-  };
-
   login = () => {
-    this.state.forms.validate();
+    this.formsCore.validate();
   };
 
   reset = () => {
-    this.state.forms.reset([
+    this.formsCore.reset([
       { name: "username", value: "" },
       { name: "password", value: "" },
     ]);
@@ -75,10 +70,10 @@ class LoginClassComponent extends React.Component {
                   </div>
                 </EmFormGroup>
 
-                <button className="w-100 btn btn-primary btn-lg" type="button">
+                <button className="w-100 btn btn-primary btn-lg" type="button" onClick={this.login}>
                   Login
                 </button>
-                <button className="w-100 btn btn-primary btn-lg" type="button">
+                <button className="w-100 btn btn-primary btn-lg" type="button" onClick={this.reset}>
                   Reset
                 </button>
               </div>
