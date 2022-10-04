@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { required, email, EmFormErrorMessage, EmFormGroup, EmForm, initEmForms, EmFormsCore, minLength } from "@enfometa/em-forms";
+import { initEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmForm } from "@enfometa/em-forms";
 
 class LoginClassComponent extends React.Component {
   constructor(props) {
     super(props);
     //this.state = {};
 
-    this.formsCore = initEmForms(
+    this.forms = initEmForms(
       {
         forms: [
           {
@@ -30,11 +30,11 @@ class LoginClassComponent extends React.Component {
   }
 
   login = () => {
-    this.formsCore.validate();
+    this.forms.validate();
   };
 
   reset = () => {
-    this.formsCore.reset([
+    this.forms.reset([
       { name: "username", value: "" },
       { name: "password", value: "" },
     ]);
@@ -48,7 +48,7 @@ class LoginClassComponent extends React.Component {
             <div className="col-md-6 col-lg-4">
               <h4 className="mb-3">Functional component Login with FormGroup</h4>
               <div className="row g-3">
-                <EmFormGroup emForms={this.formsCore}>
+                <EmFormGroup emForms={this.forms}>
                   <div className="col-12">
                     <EmForm formName="username">
                       <input type="email" className="form-control" placeholder="Email" />

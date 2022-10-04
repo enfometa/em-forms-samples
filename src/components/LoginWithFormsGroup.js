@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmForm } from "@enfometa/em-forms";
+import { useEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmForm, minLength } from "@enfometa/em-forms";
 
 const LoginWithFormsGroup = (props) => {
   const forms = useEmForms({
@@ -15,20 +15,31 @@ const LoginWithFormsGroup = (props) => {
       {
         name: "password",
         value: "",
-        validators: [{ name: "required", func: required, message: "Password is required" }],
+        validators: [
+          { name: "required", func: required, message: "Password is required" },
+          { name: "minLength", func: minLength, message: "min Length required is 6", param: { minLength: 6 } },
+        ],
+      },
+      {
+        name: "rememberMe",
+        value: false,
       },
     ],
   });
 
   const login = () => {
-    forms.validate();
+    if (forms.validate()) {
+      const model = forms.toModel();
+      //do something with model
+      console.log(model);
+    }
   };
 
   const reset = () => {
-    forms.reset([
-      { name: "username", value: "" },
-      { name: "password", value: "" },
-    ]);
+    //forms.reset();
+
+    //Ignore username reset
+    forms.reset(null, [{ name: "username" }]);
   };
 
   return (
@@ -56,7 +67,13 @@ const LoginWithFormsGroup = (props) => {
 
                   <div className="error-message">
                     <EmFormErrorMessage formName="password" validatorName="required" />
+                    <EmFormErrorMessage formName="password" validatorName="minLength" />
                   </div>
+                </div>
+                <div className="col-12">
+                  <EmForm formName="rememberMe" valuePropName="checked" valueFunc={(e) => e.target.checked}>
+                    <input type="checkbox" />
+                  </EmForm>
                 </div>
               </EmFormGroup>
 

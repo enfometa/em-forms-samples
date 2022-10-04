@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmForm, emFormsGlobalConfig } from "@enfometa/em-forms";
+import React from "react";
+import { useEmForms, required, email, EmFormErrorMessage } from "@enfometa/em-forms";
 
 const LoginWithoutFormsGroup = (props) => {
   const forms = useEmForms({
@@ -17,18 +17,28 @@ const LoginWithoutFormsGroup = (props) => {
         value: "",
         validators: [{ name: "required", func: required, message: "Password is required" }],
       },
+      {
+        name: "rememberMe",
+        value: false,
+      },
     ],
   });
 
   const login = () => {
-    forms.validate();
+    if (forms.validate()) {
+      const model = forms.toModel();
+      //do something with the model
+      console.log(model);
+    }
   };
 
   const reset = () => {
-    forms.reset([
-      { name: "username", value: "" },
-      { name: "password", value: "" },
-    ]);
+    forms.reset();
+    // forms.reset([
+    //   { name: "username", value: "" },
+    //   { name: "password", value: "" },
+    //   { name: "rememberMe", value: false },
+    // ]);
   };
 
   const updateFormValue = (formName, value) => {
@@ -72,6 +82,14 @@ const LoginWithoutFormsGroup = (props) => {
                 <div className="error-message">
                   <EmFormErrorMessage emForms={forms} formName="password" validatorName="required" />
                 </div>
+              </div>
+              <div className="col-12">
+                <input
+                  type="checkbox"
+                  onChange={(e) => updateFormValue("rememberMe", e.target.checked)}
+                  checked={forms.getFormValue("rememberMe")}
+                  onBlur={(e) => setFormTouch("rememberMe")}
+                />
               </div>
 
               <button className="w-100 btn btn-primary btn-lg" type="button" onClick={login}>
