@@ -22,6 +22,10 @@ class LoginClassComponent extends React.Component {
             value: "",
             validators: [{ name: "required", func: required, message: "Password is required" }],
           },
+          {
+            name: "rememberMe",
+            value: false,
+          },
         ],
       },
       this,
@@ -30,14 +34,14 @@ class LoginClassComponent extends React.Component {
   }
 
   login = () => {
-    this.forms.validate();
+    if (this.forms.validate()) {
+      const model = this.forms.toModel();
+      console.log(model);
+    }
   };
 
   reset = () => {
-    this.forms.reset([
-      { name: "username", value: "" },
-      { name: "password", value: "" },
-    ]);
+    this.forms.reset([{ name: "rememberMe", value: true }]);
   };
 
   render() {
@@ -46,7 +50,7 @@ class LoginClassComponent extends React.Component {
         <main>
           <div className="row g-5">
             <div className="col-md-6 col-lg-4">
-              <h4 className="mb-3">Functional component Login with FormGroup</h4>
+              <h4 className="mb-3">Class component Login with FormGroup</h4>
               <div className="row g-3">
                 <EmFormGroup emForms={this.forms}>
                   <div className="col-12">
@@ -67,6 +71,11 @@ class LoginClassComponent extends React.Component {
                     <div className="error-message">
                       <EmFormErrorMessage formName="password" validatorName="required" />
                     </div>
+                  </div>
+                  <div className="col-12">
+                    <EmForm formName="rememberMe" valuePropName="checked" valueFunc={(e) => e.target.checked}>
+                      <input type="checkbox" />
+                    </EmForm>
                   </div>
                 </EmFormGroup>
 
