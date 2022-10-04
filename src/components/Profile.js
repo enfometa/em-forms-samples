@@ -36,11 +36,26 @@ const Profile = (props) => {
     ],
   });
 
+  //fake http call
+  const getProfile = () => {
+    return { name: "Enfometa", email: "enfometa@gmial.com", age: 30, gender: "M" };
+  };
+
+  //fake http call
+  const updateProfile = (model) => {
+    console.log("Profile updated", model);
+  };
+
+  //get values from server and set em-forms object
+  useState(() => {
+    const profile = getProfile();
+    forms.setValuesFromModel(profile);
+  }, []);
+
   const update = () => {
     if (forms.validate()) {
       const model = forms.toModel();
-      //do something with model
-      console.log(model);
+      updateProfile(model);
     }
   };
 
