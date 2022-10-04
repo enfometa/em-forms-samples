@@ -67,6 +67,13 @@ const Profile = (props) => {
     <div className="container">
       <main>
         <div className="row g-5">
+          <ul className="error-message">
+            {forms.getErrors().map((form, indx) => (
+              <li key={indx}>{form.message}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="row g-5">
           <div className="col-md-6 col-lg-4">
             <h4 className="mb-3">Profile component</h4>
             <div className="row g-3">
