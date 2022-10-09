@@ -73,7 +73,7 @@ class LoginClassComponent extends React.Component {
                     </div>
                   </div>
                   <div className="col-12">
-                    <EmForm formName="rememberMe" valuePropName="checked" valueFunc={(e) => e.target.checked}>
+                    <EmForm formName="rememberMe">
                       <input type="checkbox" />
                     </EmForm>
                   </div>

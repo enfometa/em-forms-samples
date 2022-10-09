@@ -22,7 +22,7 @@ const LoginWithFormsGroup = (props) => {
       },
       {
         name: "rememberMe",
-        value: false,
+        value: true,
       },
     ],
   });
@@ -71,7 +71,7 @@ const LoginWithFormsGroup = (props) => {
                   </div>
                 </div>
                 <div className="col-12">
-                  <EmForm formName="rememberMe" valuePropName="checked" valueFunc={(e) => e.target.checked}>
+                  <EmForm formName="rememberMe">
                     <input type="checkbox" />
                   </EmForm>
                 </div>
