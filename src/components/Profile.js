@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmForm, range, minLength } from "@enfometa/em-forms";
+import RadioGroup from "./base/RadioGroup";
 
 const Profile = (props) => {
   const forms = useEmForms({
@@ -33,12 +34,23 @@ const Profile = (props) => {
         value: "M",
         validators: [{ name: "required", func: required, message: "Gender is required" }],
       },
+      {
+        name: "accountType",
+        value: "admin",
+        validators: [{ name: "required", func: required, message: "Account type is required" }],
+      },
     ],
   });
 
+  const accountTypes = [
+    { text: "Admin", value: "admin" },
+    { text: "User", value: "user" },
+    { text: "Visitor", value: "visitor" },
+  ];
+
   //fake http call
   const getProfile = () => {
-    return { name: "Enfometa", email: "enfometa@gmial.com", age: 30, gender: "M" };
+    return { name: "Enfometa", email: "enfometa@gmial.com", age: 30, gender: "M", accountType: "admin" };
   };
 
   //fake http call
@@ -119,6 +131,16 @@ const Profile = (props) => {
 
                   <div className="error-message">
                     <EmFormErrorMessage formName="gender" validatorName="required" />
+                  </div>
+                </div>
+
+                <div className="col-12">
+                  <EmForm formName="accountType">
+                    <RadioGroup name={"accountType"} dataSource={accountTypes} />
+                  </EmForm>
+
+                  <div className="error-message">
+                    <EmFormErrorMessage formName="accountType" validatorName="required" />
                   </div>
                 </div>
               </EmFormGroup>

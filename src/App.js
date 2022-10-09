@@ -32,7 +32,7 @@ emFormsGlobalConfig.registerEmFormElements([
     valuePropName: "selectedValue",
     onChangePropName: "onChange",
     valueFunc: (e) => e.target.value,
-    elements: [{ type: "RadioGroupComponent" }],
+    elements: [{ type: "RadioGroup" }],
   },
 ]);
 
