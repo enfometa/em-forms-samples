@@ -36,10 +36,7 @@ const LoginWithFormsGroup = (props) => {
   };
 
   const reset = () => {
-    //forms.reset();
-
-    //Ignore username reset
-    forms.reset(null, [{ name: "username" }]);
+    forms.reset();
   };
 
   return (
@@ -47,7 +44,7 @@ const LoginWithFormsGroup = (props) => {
       <main>
         <div className="row g-5">
           <div className="col-md-6 col-lg-4">
-            <h4 className="mb-3">Functional component Login with FormGroup</h4>
+            <h4 className="mb-3">Login</h4>
             <div className="row g-3">
               <EmFormGroup emForms={forms}>
                 <div className="col-12">
@@ -74,6 +71,7 @@ const LoginWithFormsGroup = (props) => {
                   <EmForm formName="rememberMe">
                     <input type="checkbox" />
                   </EmForm>
+                  <label>&nbsp; Remember me</label>
                 </div>
               </EmFormGroup>
 
