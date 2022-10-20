@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useEmForms, required, email, minLength, EmFormErrorMessage, EmFormGroup, EmForm } from "@enfometa/em-forms";
 
 const Login = (props) => {
@@ -17,12 +18,8 @@ const Login = (props) => {
         value: "",
         validators: [
           { name: "required", func: required, message: "Password is required" },
-          { name: "minLength", func: minLength, message: "min Length required is 6", param: { minLength: 6 } },
+          { name: "minLength", func: minLength, message: "Minimum Length required is 6", param: { minLength: 6 } },
         ],
-      },
-      {
-        name: "rememberMe",
-        value: true,
       },
     ],
   });
@@ -54,11 +51,6 @@ const Login = (props) => {
           </EmForm>
           <EmFormErrorMessage formName="password" validatorName="required" />
           <EmFormErrorMessage formName="password" validatorName="minLength" />
-        </div>
-        <div>
-          <EmForm formName="rememberMe">
-            <input type="checkbox" /> <label>Remember me</label>
-          </EmForm>
         </div>
       </EmFormGroup>
 

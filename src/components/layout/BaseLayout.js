@@ -5,6 +5,7 @@ import LoginWithFormsGroup from "../LoginWithFormsGroup";
 import LoginWithoutFormsGroup from "../LoginWithoutFormsGroup";
 import LoginClassComponent from "../LoginClassComponent";
 import Profile from "../Profile";
+import LoginYtDemo from "../LoginYtDemo";
 
 function BaseLayout(props) {
   return (
@@ -16,6 +17,7 @@ function BaseLayout(props) {
           <Route exact path="/loginwithformsgroup" element={<LoginWithoutFormsGroup />} />
           <Route exact path="/loginclasscomponent" element={<LoginClassComponent />} />
           <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/ytdemo" element={<LoginYtDemo />} />
         </Routes>
       </div>
     </React.Fragment>
