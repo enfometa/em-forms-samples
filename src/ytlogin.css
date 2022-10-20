@@ -77,3 +77,11 @@
 .login > button:hover {
   background-color: #f0e7e8;
 }
+
+.login .checkbox {
+  text-align: left;
+}
+
+.login .checkbox .label {
+  margin-left: 5px;
+}

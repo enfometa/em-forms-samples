@@ -3,11 +3,18 @@ import "../ytlogin.css";
 
 function LoginYtDemo(props) {
   return (
-    <form class="login">
-      <input type="text" placeholder="Username" />
+    <div className="login">
+      <input type="text" placeholder="Email" />
       <input type="password" placeholder="Password" />
+
+      <div className="checkbox">
+        <input id="rememberMe" type="checkbox" />
+        <label htmlFor="rememberMe" className="label">
+          Remember me
+        </label>
+      </div>
       <button>Login</button>
-    </form>
+    </div>
   );
 }
 
