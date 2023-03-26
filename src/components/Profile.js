@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmForm, range, minLength } from "@enfometa/em-forms";
+import { useEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmFormControl, range, minLength } from "@enfometa/em-forms";
 import RadioGroup from "./base/RadioGroup";
 
 const Profile = (props) => {
@@ -36,7 +36,7 @@ const Profile = (props) => {
       },
       {
         name: "accountType",
-        value: "admin",
+        value: null,
         validators: [{ name: "required", func: required, message: "Account type is required" }],
       },
     ],
@@ -91,9 +91,9 @@ const Profile = (props) => {
             <div className="row g-3">
               <EmFormGroup emForms={forms}>
                 <div className="col-12">
-                  <EmForm formName="name">
+                  <EmFormControl formName="name">
                     <input type="text" className="form-control" />
-                  </EmForm>
+                  </EmFormControl>
 
                   <div className="error-message">
                     <EmFormErrorMessage formName="name" validatorName="required" />
@@ -101,9 +101,9 @@ const Profile = (props) => {
                   </div>
                 </div>
                 <div className="col-12">
-                  <EmForm formName="email">
+                  <EmFormControl formName="email">
                     <input type="text" className="form-control" />
-                  </EmForm>
+                  </EmFormControl>
 
                   <div className="error-message">
                     <EmFormErrorMessage formName="email" validatorName="required" />
@@ -111,9 +111,9 @@ const Profile = (props) => {
                   </div>
                 </div>
                 <div className="col-12">
-                  <EmForm formName="age">
+                  <EmFormControl formName="age">
                     <input type="number" className="form-control" />
-                  </EmForm>
+                  </EmFormControl>
 
                   <div className="error-message">
                     <EmFormErrorMessage formName="age" validatorName="required" />
@@ -121,13 +121,13 @@ const Profile = (props) => {
                   </div>
                 </div>
                 <div className="col-12">
-                  <EmForm formName="gender">
+                  <EmFormControl formName="gender">
                     <select>
                       <option value="">Please select</option>
                       <option value="M">Male</option>
                       <option value="F">Female</option>
                     </select>
-                  </EmForm>
+                  </EmFormControl>
 
                   <div className="error-message">
                     <EmFormErrorMessage formName="gender" validatorName="required" />
@@ -135,9 +135,9 @@ const Profile = (props) => {
                 </div>
 
                 <div className="col-12">
-                  <EmForm formName="accountType">
+                  <EmFormControl formName="accountType">
                     <RadioGroup name={"accountType"} dataSource={accountTypes} />
-                  </EmForm>
+                  </EmFormControl>
 
                   <div className="error-message">
                     <EmFormErrorMessage formName="accountType" validatorName="required" />

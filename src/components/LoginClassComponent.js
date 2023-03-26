@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { initEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmForm } from "@enfometa/em-forms";
+import { initEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmFormControl } from "@enfometa/em-forms";
 
 class LoginClassComponent extends React.Component {
   constructor(props) {
@@ -54,9 +54,9 @@ class LoginClassComponent extends React.Component {
               <div className="row g-3">
                 <EmFormGroup emForms={this.forms}>
                   <div className="col-12">
-                    <EmForm formName="username">
+                    <EmFormControl formName="username">
                       <input type="email" className="form-control" placeholder="Email" />
-                    </EmForm>
+                    </EmFormControl>
 
                     <div className="error-message">
                       <EmFormErrorMessage formName="username" validatorName="required" />
@@ -64,18 +64,18 @@ class LoginClassComponent extends React.Component {
                     </div>
                   </div>
                   <div className="col-12">
-                    <EmForm formName="password">
+                    <EmFormControl formName="password">
                       <input type="password" className="form-control" placeholder="password" />
-                    </EmForm>
+                    </EmFormControl>
 
                     <div className="error-message">
                       <EmFormErrorMessage formName="password" validatorName="required" />
                     </div>
                   </div>
                   <div className="col-12">
-                    <EmForm formName="rememberMe">
+                    <EmFormControl formName="rememberMe">
                       <input type="checkbox" />
-                    </EmForm>
+                    </EmFormControl>
                   </div>
                 </EmFormGroup>
 

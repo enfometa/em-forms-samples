@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmForm, minLength } from "@enfometa/em-forms";
+import { useEmForms, required, email, EmFormErrorMessage, EmFormGroup, EmFormControl, minLength } from "@enfometa/em-forms";
 
 const LoginWithFormsGroup = (props) => {
   const forms = useEmForms({
@@ -25,6 +25,9 @@ const LoginWithFormsGroup = (props) => {
         value: true,
       },
     ],
+    onChange: (formName, value) => {
+      console.log(formName, value);
+    },
   });
 
   const login = () => {
@@ -48,9 +51,9 @@ const LoginWithFormsGroup = (props) => {
             <div className="row g-3">
               <EmFormGroup emForms={forms}>
                 <div className="col-12">
-                  <EmForm formName="username">
+                  <EmFormControl formName="username">
                     <input type="email" className="form-control" placeholder="Email" />
-                  </EmForm>
+                  </EmFormControl>
 
                   <div className="error-message">
                     <EmFormErrorMessage formName="username" validatorName="required" />
@@ -58,9 +61,9 @@ const LoginWithFormsGroup = (props) => {
                   </div>
                 </div>
                 <div className="col-12">
-                  <EmForm formName="password">
+                  <EmFormControl formName="password">
                     <input type="password" className="form-control" placeholder="password" />
-                  </EmForm>
+                  </EmFormControl>
 
                   <div className="error-message">
                     <EmFormErrorMessage formName="password" validatorName="required" />
@@ -68,9 +71,9 @@ const LoginWithFormsGroup = (props) => {
                   </div>
                 </div>
                 <div className="col-12">
-                  <EmForm formName="rememberMe">
+                  <EmFormControl formName="rememberMe">
                     <input type="checkbox" />
-                  </EmForm>
+                  </EmFormControl>
                   <label>&nbsp; Remember me</label>
                 </div>
               </EmFormGroup>

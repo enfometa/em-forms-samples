@@ -4,24 +4,24 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import BaseLayout from "./components/layout/BaseLayout";
 import { emFormsGlobalConfig } from "@enfometa/em-forms";
 
-emFormsGlobalConfig.registerEmFormElements([
+emFormsGlobalConfig.registerEmFormControls([
   {
     valuePropName: "value",
     onChangePropName: "onChange",
     valueFunc: (e) => e.target.value,
-    elements: [{ type: "input" }],
+    controls: [{ type: "input" }],
   },
   {
     valuePropName: "value",
     onChangePropName: "onChange",
     valueFunc: (e) => e.target.value,
-    elements: [{ type: "select" }],
+    controls: [{ type: "select" }],
   },
   {
     valuePropName: "checked",
     onChangePropName: "onChange",
     valueFunc: (e) => e.target.checked,
-    elements: [
+    controls: [
       {
         type: "input",
         props: [{ name: "type", value: "checkbox" }],
@@ -32,7 +32,7 @@ emFormsGlobalConfig.registerEmFormElements([
     valuePropName: "selectedValue",
     onChangePropName: "onChange",
     valueFunc: (e) => e.target.value,
-    elements: [{ type: "RadioGroup" }],
+    controls: [{ type: "RadioGroup" }],
   },
 ]);
 

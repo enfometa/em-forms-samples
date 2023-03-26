@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useEmForms, required, email, minLength, EmFormErrorMessage, EmFormGroup, EmForm } from "@enfometa/em-forms";
+import { useEmForms, required, email, minLength, EmFormErrorMessage, EmFormGroup, EmFormControl } from "@enfometa/em-forms";
 
 const Login = (props) => {
   const forms = useEmForms({
@@ -38,17 +38,17 @@ const Login = (props) => {
     <div>
       <EmFormGroup emForms={forms}>
         <div>
-          <EmForm formName="username">
+          <EmFormControl formName="username">
             <input type="email" placeholder="Email" />
-          </EmForm>
+          </EmFormControl>
 
           <EmFormErrorMessage formName="username" validatorName="required" />
           <EmFormErrorMessage formName="username" validatorName="email" />
         </div>
         <div>
-          <EmForm formName="password">
+          <EmFormControl formName="password">
             <input type="password" placeholder="password" />
-          </EmForm>
+          </EmFormControl>
           <EmFormErrorMessage formName="password" validatorName="required" />
           <EmFormErrorMessage formName="password" validatorName="minLength" />
         </div>
